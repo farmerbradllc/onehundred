@@ -32,7 +32,7 @@ A curated list of 100 highly searched web tools to build, categorized for practi
 20. Broken Link Checker
 
 ## Password and Security Tools
-21. Password Generator
+21. [Password Generator](https://github.com/farmerbradllc/passwords/)
 22. Passphrase Generator
 23. Entropy Checker
 24. Data Breach Checker
