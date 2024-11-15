@@ -10,5 +10,11 @@
     "title": "To-Do List Generator",
     "url": "https://farmerbradllc.github.io/to-do",
     "slug": "/to-do"
+  },
+  {
+    "id": 3,
+    "title": "SEO Analyzer",
+    "url": "https://seo.bradwood.dev".
+    "slug": "/seo"
   }
 ]
