@@ -22,43 +22,32 @@
       const prevProject = projects[prevIndex];
       const nextProject = projects[nextIndex];
 
-      // Create footer element
+      // Create footer element with Bootstrap classes
       const footer = document.createElement('footer');
-      footer.style.padding = '20px';
-      footer.style.backgroundColor = '#f8f9fa';
-      footer.style.textAlign = 'center';
-      footer.style.marginTop = '40px';
+      footer.className = 'mt-5 py-3 border-top';
 
-      // Create a container for the links and donate button
+      // Create a container
       const container = document.createElement('div');
-      container.style.display = 'flex';
-      container.style.justifyContent = 'center';
-      container.style.alignItems = 'center';
-      container.style.gap = '20px';
+      container.className = 'container d-flex justify-content-center align-items-center';
 
-      // Create navigation links
+      // Previous Link
       const prevLink = document.createElement('a');
       prevLink.href = prevProject.url;
       prevLink.textContent = `← ${prevProject.title}`;
-      prevLink.style.marginRight = '20px';
+      prevLink.className = 'btn btn-link';
 
-      const nextLink = document.createElement('a');
-      nextLink.href = nextProject.url;
-      nextLink.textContent = `${nextProject.title} →`;
-      nextLink.style.marginLeft = '20px';
-
-      // Create PayPal Donate button
+      // PayPal Donate Button
       const donateForm = document.createElement('form');
       donateForm.action = 'https://www.paypal.com/donate';
       donateForm.method = 'post';
       donateForm.target = '_blank';
-      donateForm.style.display = 'inline-block';
-      donateForm.style.margin = '0';
+      donateForm.className = 'mx-3';
 
+      // Hidden Inputs
       const businessInput = document.createElement('input');
       businessInput.type = 'hidden';
       businessInput.name = 'business';
-      businessInput.value = 'brad@farmerbrad.com'; // Replace with your PayPal email or merchant ID
+      businessInput.value = 'brad@farmerbrad.com'; // Your PayPal email or merchant ID
 
       const noRecurringInput = document.createElement('input');
       noRecurringInput.type = 'hidden';
@@ -75,16 +64,11 @@
       currencyCodeInput.name = 'currency_code';
       currencyCodeInput.value = 'USD';
 
+      // Donate Button
       const donateButton = document.createElement('input');
       donateButton.type = 'submit';
       donateButton.value = 'Donate with PayPal';
-      donateButton.style.backgroundColor = '#0070ba';
-      donateButton.style.color = '#fff';
-      donateButton.style.border = 'none';
-      donateButton.style.padding = '10px 20px';
-      donateButton.style.cursor = 'pointer';
-      donateButton.style.fontSize = '16px';
-      donateButton.style.borderRadius = '5px';
+      donateButton.className = 'btn btn-primary';
 
       // Append inputs to form
       donateForm.appendChild(businessInput);
@@ -92,6 +76,12 @@
       donateForm.appendChild(itemNameInput);
       donateForm.appendChild(currencyCodeInput);
       donateForm.appendChild(donateButton);
+
+      // Next Link
+      const nextLink = document.createElement('a');
+      nextLink.href = nextProject.url;
+      nextLink.textContent = `${nextProject.title} →`;
+      nextLink.className = 'btn btn-link';
 
       // Append elements to container
       container.appendChild(prevLink);
