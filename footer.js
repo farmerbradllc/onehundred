@@ -1,6 +1,8 @@
 // footer.js
 
 (async function() {
+  // Append footer to the wrapper instead of the body
+
   try {
     // Function to check if Bootstrap CSS is included
     function isBootstrapCssIncluded() {
@@ -125,8 +127,8 @@
       // Append container to footer
       footer.appendChild(container);
 
-      // Append footer to body
-      document.body.appendChild(footer);
+      const wrapper = document.getElementById('wrapper');
+wrapper.appendChild(footer);
     } else {
       console.error('Current project not found in projects.json.');
     }
