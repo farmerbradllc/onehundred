@@ -1,4 +1,3 @@
-
 # 100 Web Tools Projects
 
 A curated list of 100 highly searched web tools to build, categorized for practical utility and maximum impact.
