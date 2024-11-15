@@ -2,15 +2,14 @@
 
 (async function() {
   try {
-    // Fetch the projects JSON file
     const response = await fetch('https://farmerbradllc.github.io/projects.json');
     const projects = await response.json();
 
-    // Get the current URL
-    const currentUrl = window.location.href;
+    // Get the current path
+    const currentPath = window.location.pathname;
 
     // Find the index of the current project
-    const currentIndex = projects.findIndex(project => currentUrl.includes(project.url));
+    const currentIndex = projects.findIndex(project => project.slug === currentPath || currentPath.includes(project.slug));
 
     // If current project is found
     if (currentIndex !== -1) {
