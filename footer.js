@@ -1,8 +1,6 @@
 // footer.js
 
 (async function() {
-  // Append footer to the wrapper instead of the body
-
   try {
     // Function to check if Bootstrap CSS is included
     function isBootstrapCssIncluded() {
@@ -61,21 +59,32 @@
 
       // Create a container
       const container = document.createElement('div');
-      container.className = 'container d-flex justify-content-center align-items-center';
+      container.className = 'container';
 
-      // Previous Link
+      // Create a row
+      const row = document.createElement('div');
+      row.className = 'row align-items-center text-center';
+
+      // Previous Link Column
+      const prevCol = document.createElement('div');
+      prevCol.className = 'col-12 col-md-4 mb-2 mb-md-0 text-md-start';
+
       const prevLink = document.createElement('a');
       prevLink.href = prevProject.url;
       prevLink.textContent = `← ${prevProject.title}`;
       prevLink.className = 'btn btn-link';
       prevLink.setAttribute('aria-label', `Previous project: ${prevProject.title}`);
 
-      // PayPal Donate Button
+      prevCol.appendChild(prevLink);
+
+      // Donate Button Column
+      const donateCol = document.createElement('div');
+      donateCol.className = 'col-12 col-md-4 mb-2 mb-md-0';
+
       const donateForm = document.createElement('form');
       donateForm.action = 'https://www.paypal.com/donate';
       donateForm.method = 'post';
       donateForm.target = '_blank';
-      donateForm.className = 'mx-3';
 
       // Hidden Inputs
       const businessInput = document.createElement('input');
@@ -112,27 +121,4 @@
       donateForm.appendChild(currencyCodeInput);
       donateForm.appendChild(donateButton);
 
-      // Next Link
-      const nextLink = document.createElement('a');
-      nextLink.href = nextProject.url;
-      nextLink.textContent = `${nextProject.title} →`;
-      nextLink.className = 'btn btn-link';
-      nextLink.setAttribute('aria-label', `Next project: ${nextProject.title}`);
-
-      // Append elements to container
-      container.appendChild(prevLink);
-      container.appendChild(donateForm);
-      container.appendChild(nextLink);
-
-      // Append container to footer
-      footer.appendChild(container);
-
-      const wrapper = document.getElementById('wrapper');
-wrapper.appendChild(footer);
-    } else {
-      console.error('Current project not found in projects.json.');
-    }
-  } catch (error) {
-    console.error('Error loading footer:', error);
-  }
-})();
+      donateCol
