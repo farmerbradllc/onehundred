@@ -121,4 +121,37 @@
       donateForm.appendChild(currencyCodeInput);
       donateForm.appendChild(donateButton);
 
-      donateCol
+      donateCol.appendChild(donateForm);
+
+      // Next Link Column
+      const nextCol = document.createElement('div');
+      nextCol.className = 'col-12 col-md-4 text-md-end';
+
+      const nextLink = document.createElement('a');
+      nextLink.href = nextProject.url;
+      nextLink.textContent = `${nextProject.title} →`;
+      nextLink.className = 'btn btn-link';
+      nextLink.setAttribute('aria-label', `Next project: ${nextProject.title}`);
+
+      nextCol.appendChild(nextLink);
+
+      // Append columns to row
+      row.appendChild(prevCol);
+      row.appendChild(donateCol);
+      row.appendChild(nextCol);
+
+      // Append row to container
+      container.appendChild(row);
+
+      // Append container to footer
+      footer.appendChild(container);
+
+      // Append footer to body
+      document.body.appendChild(footer);
+    } else {
+      console.error('Current project not found in projects.json.');
+    }
+  } catch (error) {
+    console.error('Error loading footer:', error);
+  }
+})();
