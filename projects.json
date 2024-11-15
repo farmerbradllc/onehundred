@@ -1,15 +1,15 @@
 [
   {
-    "id": 2,
-    "title": "Pomodoro Timer",
-    "url": "https://farmerbradllc.github.io/pomodoro",
-    "slug": "/pomodoro"
-  },
-  {
     "id": 1,
     "title": "To-Do List Generator",
     "url": "https://farmerbradllc.github.io/to-do",
     "slug": "/to-do"
+  },
+  {
+    "id": 2,
+    "title": "Pomodoro Timer",
+    "url": "https://farmerbradllc.github.io/pomodoro",
+    "slug": "/pomodoro"
   },
   {
     "id": 3,
