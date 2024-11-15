@@ -2,7 +2,7 @@
 
 (async function() {
   try {
-    const response = await fetch('https://farmerbradllc.github.io/projects.json');
+    const response = await fetch('https://farmerbradllc.github.io/onehundred/projects.json');
     const projects = await response.json();
 
     // Get the current path
