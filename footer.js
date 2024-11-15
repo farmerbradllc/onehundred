@@ -2,6 +2,37 @@
 
 (async function() {
   try {
+    // Function to check if Bootstrap CSS is included
+    function isBootstrapCssIncluded() {
+      const links = Array.from(document.getElementsByTagName('link'));
+      return links.some(link => link.href.includes('bootstrap.min.css'));
+    }
+
+    // Function to check if Bootstrap JS is included
+    function isBootstrapJsIncluded() {
+      const scripts = Array.from(document.getElementsByTagName('script'));
+      return scripts.some(script => script.src.includes('bootstrap.bundle.min.js') || script.src.includes('bootstrap.min.js'));
+    }
+
+    // Include Bootstrap CSS if not already included
+    if (!isBootstrapCssIncluded()) {
+      const bootstrapCss = document.createElement('link');
+      bootstrapCss.rel = 'stylesheet';
+      bootstrapCss.href = 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css';
+      bootstrapCss.integrity = 'sha384-9ndCyUaT23s5nZt+Yk6pv2PPHIliQZZADThxjln8Jlb6Ra2hiL5e6oBxFvcp1dYG';
+      bootstrapCss.crossOrigin = 'anonymous';
+      document.head.appendChild(bootstrapCss);
+    }
+
+    // Include Bootstrap JS if not already included
+    if (!isBootstrapJsIncluded()) {
+      const bootstrapJs = document.createElement('script');
+      bootstrapJs.src = 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js';
+      bootstrapJs.integrity = 'sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+6j8K7IDlE3rXwN8AmXcZxXW5U7lB';
+      bootstrapJs.crossOrigin = 'anonymous';
+      document.body.appendChild(bootstrapJs);
+    }
+
     const response = await fetch('https://farmerbradllc.github.io/onehundred/projects.json');
     const projects = await response.json();
 
@@ -35,6 +66,7 @@
       prevLink.href = prevProject.url;
       prevLink.textContent = `← ${prevProject.title}`;
       prevLink.className = 'btn btn-link';
+      prevLink.setAttribute('aria-label', `Previous project: ${prevProject.title}`);
 
       // PayPal Donate Button
       const donateForm = document.createElement('form');
@@ -69,6 +101,7 @@
       donateButton.type = 'submit';
       donateButton.value = 'Donate with PayPal';
       donateButton.className = 'btn btn-primary';
+      donateButton.setAttribute('aria-label', 'Donate with PayPal');
 
       // Append inputs to form
       donateForm.appendChild(businessInput);
@@ -82,6 +115,7 @@
       nextLink.href = nextProject.url;
       nextLink.textContent = `${nextProject.title} →`;
       nextLink.className = 'btn btn-link';
+      nextLink.setAttribute('aria-label', `Next project: ${nextProject.title}`);
 
       // Append elements to container
       container.appendChild(prevLink);
