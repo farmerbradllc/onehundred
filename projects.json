@@ -1,8 +1,8 @@
 [
   {
     "id": 1,
-    "title": "Project One",
-    "url": "https://farmerbradllc.github.io/onehundred/project-one"
+    "title": "Pomodoro Timer",
+    "url": "https://farmerbradllc.github.io/pomodoro"
   },
   {
     "id": 2,
@@ -14,5 +14,4 @@
     "title": "Project Three",
     "url": "https://farmerbradllc.github.io/onehundred/project-three"
   }
-  // Add all 100 projects here
 ]
