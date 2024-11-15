@@ -4,8 +4,8 @@
 A curated list of 100 highly searched web tools to build, categorized for practical utility and maximum impact.
 
 ## Productivity Tools
-1. [To-Do List Generator](https://github.com/farmerbradllc/to-do/)
-2. [Pomodoro Timer](https://github.com/farmerbradllc/pomodoro/)
+1. [To-Do List Generator](https://farmerbradllc.github.io/to-do)
+2. [Pomodoro Timer](https://farmerbradllc.github.io/pomodoro/)
 3. Habit Tracker
 4. Meeting Scheduler
 5. Event Countdown Timer
