@@ -102,7 +102,7 @@
       footer.appendChild(container);
 
       // Append footer to body
-      document.body.prependChild(footer);
+      document.body.appendChild(footer);
     } else {
       console.error('Current project not found in projects.json.');
     }
