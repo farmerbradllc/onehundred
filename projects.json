@@ -16,5 +16,11 @@
     "title": "SEO Analyzer",
     "url": "https://seo.bradwood.dev".
     "slug": "/seo"
+  },
+  {
+    "id": 4,
+    "title": "Password Generator",
+    "url": "https://farmerbradllc.github.io/passwords".
+    "slug": "/passwords"
   }
 ]
