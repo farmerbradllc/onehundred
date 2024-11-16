@@ -3,8 +3,8 @@
 A curated list of 100 highly searched web tools to build, categorized for practical utility and maximum impact.
 
 ## Productivity Tools
-1. [To-Do List Generator](https://farmerbradllc.github.io/to-do)
-2. [Pomodoro Timer](https://farmerbradllc.github.io/pomodoro/)
+1. [To-Do List Generator](https://to-do.bradwood.dev)
+2. [Pomodoro Timer](https://pomodoro.bradwood.dev)
 3. Habit Tracker
 4. Meeting Scheduler
 5. Event Countdown Timer
@@ -31,7 +31,7 @@ A curated list of 100 highly searched web tools to build, categorized for practi
 20. Broken Link Checker
 
 ## Password and Security Tools
-21. [Password Generator](https://farmerbradllc.github.io/passwords/)
+21. [Password Generator](https://passwords.bradwood.dev)
 22. Passphrase Generator
 23. Entropy Checker
 24. Data Breach Checker
