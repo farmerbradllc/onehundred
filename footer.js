@@ -5,6 +5,16 @@ document.addEventListener('DOMContentLoaded', async function() {
       const links = Array.from(document.getElementsByTagName('link'));
       return links.some(link => link.href.includes('bootstrap.min.css'));
     }
+// Function to normalize URLs for comparison
+function normalizeUrl(url) {
+  try {
+    const urlObj = new URL(url);
+    return urlObj.origin + urlObj.pathname; // Keep only the origin and pathname
+  } catch (error) {
+    console.error('Invalid URL:', url);
+    return url;
+  }
+}
 
     // Function to check if Bootstrap JS is included
     function isBootstrapJsIncluded() {
@@ -43,7 +53,7 @@ document.addEventListener('DOMContentLoaded', async function() {
     }
 
     const normalizedCurrentUrl = normalizeUrl(currentUrl);
-    const currentIndex = projects.findIndex(project => normalizeUrl(project.url) === normalizedCurrentUrl);
+    const currentIndex = projects.findIndex(project => normalizeUrl(project.url) === normalizeUrl(currentUrl));
 
     if (currentIndex !== -1) {
       const prevIndex = (currentIndex - 1 + projects.length) % projects.length;
