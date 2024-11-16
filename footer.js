@@ -35,7 +35,7 @@
 
     // Rest of your existing code...
 
-    const response = await fetch('https://farmerbradllc.github.io/onehundred/projects.json');
+    const response = await fetch('https://onehundred.bradwood.dev/projects.json');
     const projects = await response.json();
 
     // Get the current URL
