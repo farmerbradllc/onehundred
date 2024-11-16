@@ -148,7 +148,19 @@
       row.appendChild(donateCol);
       row.appendChild(nextCol);
 
-    
+
+// Add click event listener
+donateButton.addEventListener('click', () => {
+  // Send event to GA4
+  gtag('event', 'donate_click', {
+    event_category: 'engagement',
+    event_label: 'Donate to PayPal',
+    value: 1 // Optional value to signify donation intent
+  });
+
+  // Optional: Debugging in console
+  console.log('Donate button clicked and event sent to GA4');
+});
 
       // Append container to footer
       footer.appendChild(row);
