@@ -41,7 +41,7 @@
 
     // Find the index of the current project
     const currentIndex = projects.findIndex(
-      project => project.slug === currentPath || currentPath.includes(project.slug)
+      project => project.url === currentPath || currentPath.includes(project.slug)
     );
 
     // If current project is found
