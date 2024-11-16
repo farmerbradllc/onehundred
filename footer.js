@@ -36,13 +36,19 @@
     const response = await fetch('https://farmerbradllc.github.io/onehundred/projects.json');
     const projects = await response.json();
 
-    // Get the current path
-    const currentPath = window.location.pathname;
+    // Get the current URL
+    const currentUrl = window.location.href;
+
+    // Function to normalize URLs for comparison
+    function normalizeUrl(url) {
+      // Remove trailing slash
+      return url.endsWith('/') ? url.slice(0, -1) : url;
+    }
 
     // Find the index of the current project
-    const currentIndex = projects.findIndex(
-      project => project.url === currentPath || currentPath.includes(project.slug)
-    );
+    const normalizedCurrentUrl = normalizeUrl(currentUrl);
+
+    const currentIndex = projects.findIndex(project => normalizeUrl(project.url) === normalizedCurrentUrl);
 
     // If current project is found
     if (currentIndex !== -1) {
