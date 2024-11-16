@@ -2,17 +2,30 @@
   {
     "id": 1,
     "title": "To-Do List Generator",
+<<<<<<< HEAD
     "url": "https://todo.bradwood.dev"
+=======
+    "url": "https://farmerbradllc.github.io/to-do"
+>>>>>>> 4b1c188 (update)
   },
   {
     "id": 2,
     "title": "Pomodoro Timer",
+<<<<<<< HEAD
     "url": "https://farmerbradllc.github.io/pomodoro"
+=======
+    "url": "https://pomodoro.bradwood.dev"
+
+>>>>>>> 4b1c188 (update)
   },
   {
     "id": 3,
     "title": "SEO Analyzer",
     "url": "https://seo.bradwood.dev"
+<<<<<<< HEAD
+=======
+  
+>>>>>>> 4b1c188 (update)
   },
   {
     "id": 4,
