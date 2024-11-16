@@ -146,11 +146,8 @@
       row.appendChild(donateCol);
       row.appendChild(nextCol);
 
-      // Append row to container
-      container.appendChild(row);
-
       // Append container to footer
-      footer.appendChild(container);
+      footer.appendChild(row);
 
       // Append footer to body
       document.body.appendChild(footer);
