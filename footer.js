@@ -48,10 +48,6 @@ function normalizeUrl(url) {
 
     const currentUrl = window.location.href;
 
-    function normalizeUrl(url) {
-      return url.endsWith('/') ? url.slice(0, -1) : url;
-    }
-
     const normalizedCurrentUrl = normalizeUrl(currentUrl);
     const currentIndex = projects.findIndex(project => normalizeUrl(project.url) === normalizeUrl(currentUrl));
 
