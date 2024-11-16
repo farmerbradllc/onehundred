@@ -19,7 +19,7 @@
       const bootstrapCss = document.createElement('link');
       bootstrapCss.rel = 'stylesheet';
       bootstrapCss.href = 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css';
-      bootstrapCss.integrity = 'sha384-9ndCyUaT23s5nZt+Yk6pv2PPHIliQZZADThxjln8Jlb6Ra2hiL5e6oBxFvcp1dYG';
+      bootstrapCss.integrity = 'sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM';
       bootstrapCss.crossOrigin = 'anonymous';
       document.head.appendChild(bootstrapCss);
     }
@@ -28,10 +28,12 @@
     if (!isBootstrapJsIncluded()) {
       const bootstrapJs = document.createElement('script');
       bootstrapJs.src = 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js';
-      bootstrapJs.integrity = 'sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+6j8K7IDlE3rXwN8AmXcZxXW5U7lB';
+      bootstrapJs.integrity = 'sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz';
       bootstrapJs.crossOrigin = 'anonymous';
       document.body.appendChild(bootstrapJs);
     }
+
+    // Rest of your existing code...
 
     const response = await fetch('https://farmerbradllc.github.io/onehundred/projects.json');
     const projects = await response.json();
@@ -145,6 +147,8 @@
       row.appendChild(prevCol);
       row.appendChild(donateCol);
       row.appendChild(nextCol);
+
+    
 
       // Append container to footer
       footer.appendChild(row);
