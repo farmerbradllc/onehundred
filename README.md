@@ -3,7 +3,7 @@
 A curated list of 100 highly searched web tools to build, categorized for practical utility and maximum impact.
 
 ## Productivity Tools
-1. [To-Do List Generator](https://to-do.bradwood.dev)
+1. [To-Do List Generator](https://todo.bradwood.dev)
 2. [Pomodoro Timer](https://pomodoro.bradwood.dev)
 3. Habit Tracker
 4. Meeting Scheduler
