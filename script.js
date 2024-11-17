@@ -1,14 +1,24 @@
 document.addEventListener("DOMContentLoaded", () => {
     const markdownContent = document.getElementById("markdown-content");
 
+    // Check if the target element exists
+    if (!markdownContent) {
+        console.error("Element with id 'markdown-content' not found.");
+        return;
+    }
+
     // Check if marked is loaded
-    console.log("Is marked defined?", typeof marked);
+    if (typeof marked !== "function") {
+        console.error("Marked.js is not loaded. Ensure the library is included.");
+        return;
+    }
+    console.log("Marked.js loaded successfully.");
 
     // Fetch the markdown file
     fetch("docs/README.md")
         .then((response) => {
             if (!response.ok) {
-                throw new Error("Failed to fetch the markdown file.");
+                throw new Error(`Failed to fetch the markdown file. Status: ${response.status}`);
             }
             return response.text();
         })
