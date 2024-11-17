@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const markdownContent = document.getElementById("markdown-content");
 
     // Fetch the markdown file
-    fetch("README.md")
+    fetch("./README.md")
         .then((response) => {
             if (!response.ok) {
                 throw new Error("Failed to fetch the markdown file.");
