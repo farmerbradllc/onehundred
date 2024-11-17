@@ -10,7 +10,8 @@ document.addEventListener("DOMContentLoaded", () => {
             return response.text();
         })
         .then((markdown) => {
-            // Convert markdown to HTML using a library like marked.js
+            console.log(marked); // Check if marked function is available
+            // Convert markdown to HTML
             const htmlContent = marked(markdown);
             markdownContent.innerHTML = htmlContent;
         })
