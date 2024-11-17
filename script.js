@@ -1,8 +1,11 @@
 document.addEventListener("DOMContentLoaded", () => {
     const markdownContent = document.getElementById("markdown-content");
 
+    // Check if marked is loaded
+    console.log("Is marked defined?", typeof marked);
+
     // Fetch the markdown file
-    fetch("./README.md")
+    fetch("README.md")
         .then((response) => {
             if (!response.ok) {
                 throw new Error("Failed to fetch the markdown file.");
@@ -10,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
             return response.text();
         })
         .then((markdown) => {
-            console.log(marked); // Check if marked function is available
+            console.log("Markdown file fetched successfully.");
             // Convert markdown to HTML
             const htmlContent = marked(markdown);
             markdownContent.innerHTML = htmlContent;
