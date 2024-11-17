@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Function to dynamically load Marked.js
     function loadMarkedLibrary(callback) {
         const script = document.createElement("script");
-        script.src = "https://cdn.jsdelivr.net/npm/marked/marked.min.js";
+        script.src = "https://cdn.jsdelivr.net/npm/marked/marked.min.js"; // Correct CDN URL for Marked.js
         script.onload = callback;
         script.onerror = () => {
             console.error("Failed to load Marked.js library.");
@@ -31,8 +31,13 @@ document.addEventListener("DOMContentLoaded", () => {
             .then((markdown) => {
                 console.log("Markdown file fetched successfully.");
                 // Convert markdown to HTML
-                const htmlContent = marked(markdown);
-                markdownContent.innerHTML = htmlContent;
+                if (typeof marked === "function") {
+                    const htmlContent = marked(markdown);
+                    markdownContent.innerHTML = htmlContent;
+                } else {
+                    console.error("Marked.js is not available.");
+                    markdownContent.innerHTML = "<p>Failed to convert markdown. Marked.js is missing.</p>";
+                }
             })
             .catch((error) => {
                 console.error("Error loading markdown file:", error);
@@ -40,7 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
             });
     }
 
-    // Check if marked is already loaded
+    // Check if Marked.js is already loaded
     if (typeof marked === "function") {
         console.log("Marked.js already loaded.");
         fetchAndRenderMarkdown();
