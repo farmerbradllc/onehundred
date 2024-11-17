@@ -7,29 +7,45 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
     }
 
-    // Check if marked is loaded
-    if (typeof marked !== "function") {
-        console.error("Marked.js is not loaded. Ensure the library is included.");
-        return;
-    }
-    console.log("Marked.js loaded successfully.");
-
-    // Fetch the markdown file
-    fetch("docs/README.md")
-        .then((response) => {
-            if (!response.ok) {
-                throw new Error(`Failed to fetch the markdown file. Status: ${response.status}`);
-            }
-            return response.text();
-        })
-        .then((markdown) => {
-            console.log("Markdown file fetched successfully.");
-            // Convert markdown to HTML
-            const htmlContent = marked(markdown);
-            markdownContent.innerHTML = htmlContent;
-        })
-        .catch((error) => {
-            console.error("Error loading markdown file:", error);
+    // Function to dynamically load Marked.js
+    function loadMarkedLibrary(callback) {
+        const script = document.createElement("script");
+        script.src = "https://cdn.jsdelivr.net/npm/marked/marked.min.js";
+        script.onload = callback;
+        script.onerror = () => {
+            console.error("Failed to load Marked.js library.");
             markdownContent.innerHTML = "<p>Failed to load content. Please try again later.</p>";
-        });
+        };
+        document.head.appendChild(script);
+    }
+
+    // Function to fetch and render markdown
+    function fetchAndRenderMarkdown() {
+        fetch("docs/README.md")
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error(`Failed to fetch the markdown file. Status: ${response.status}`);
+                }
+                return response.text();
+            })
+            .then((markdown) => {
+                console.log("Markdown file fetched successfully.");
+                // Convert markdown to HTML
+                const htmlContent = marked(markdown);
+                markdownContent.innerHTML = htmlContent;
+            })
+            .catch((error) => {
+                console.error("Error loading markdown file:", error);
+                markdownContent.innerHTML = "<p>Failed to load content. Please try again later.</p>";
+            });
+    }
+
+    // Check if marked is already loaded
+    if (typeof marked === "function") {
+        console.log("Marked.js already loaded.");
+        fetchAndRenderMarkdown();
+    } else {
+        console.log("Loading Marked.js dynamically...");
+        loadMarkedLibrary(fetchAndRenderMarkdown);
+    }
 });
