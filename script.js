@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log("Is marked defined?", typeof marked);
 
     // Fetch the markdown file
-    fetch("README.md")
+    fetch("docs/README.md")
         .then((response) => {
             if (!response.ok) {
                 throw new Error("Failed to fetch the markdown file.");
