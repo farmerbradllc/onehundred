@@ -1,76 +1,61 @@
-document.addEventListener('DOMContentLoaded', async function() {
+document.addEventListener('DOMContentLoaded', async function () {
   try {
     // Function to check if Bootstrap CSS is included
     function isBootstrapCssIncluded() {
       const links = Array.from(document.getElementsByTagName('link'));
       return links.some(link => link.href.includes('bootstrap.min.css'));
     }
+
     // Function to check if Bootstrap JS is included
     function isBootstrapJsIncluded() {
       const scripts = Array.from(document.getElementsByTagName('script'));
       return scripts.some(script => script.src.includes('bootstrap.bundle.min.js') || script.src.includes('bootstrap.min.js'));
     }
 
-    function addRatingWidgetStylesheet() {
-      const link = document.createElement('link');
-      link.rel = 'stylesheet';
-      link.href = 'https://farmerbradllc.github.io/application-rating-widget/style.css';
-      document.head.appendChild(link);
+    // Add a script only if it doesn't already exist
+    function addScriptIfNotExists(src, async = true) {
+      if (!Array.from(document.scripts).some(script => script.src.includes(src))) {
+        const script = document.createElement('script');
+        script.src = src;
+        script.async = async;
+        script.onload = () => console.log(`${src} loaded successfully.`);
+        script.onerror = () => console.error(`Failed to load script: ${src}`);
+        document.head.appendChild(script);
+      }
     }
-  
+
+    // Add a stylesheet only if it doesn't already exist
+    function addStylesheetIfNotExists(href) {
+      if (!Array.from(document.styleSheets).some(style => style.href && style.href.includes(href))) {
+        const link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.href = href;
+        document.head.appendChild(link);
+      }
+    }
 
     // Include Bootstrap CSS if not already included
     if (!isBootstrapCssIncluded()) {
-      const bootstrapCss = document.createElement('link');
-      bootstrapCss.rel = 'stylesheet';
-      bootstrapCss.href = 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css';
-      bootstrapCss.integrity = 'sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM';
-      bootstrapCss.crossOrigin = 'anonymous';
-      document.head.appendChild(bootstrapCss);
+      addStylesheetIfNotExists('https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css');
     }
 
     // Include Bootstrap JS if not already included
     if (!isBootstrapJsIncluded()) {
-      const bootstrapJs = document.createElement('script');
-      bootstrapJs.src = 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js';
-      bootstrapJs.integrity = 'sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz';
-      bootstrapJs.crossOrigin = 'anonymous';
-      document.body.appendChild(bootstrapJs);
+      addScriptIfNotExists('https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js');
     }
 
     // Dynamically load the application-rating-widget script
     const ratingWidgetScript = document.createElement('script');
     ratingWidgetScript.src = 'https://farmerbradllc.github.io/application-rating-widget/script.js';
+    ratingWidgetScript.async = true;
     ratingWidgetScript.onload = () => {
       console.log('Rating widget script loaded successfully.');
-      addRatingWidgetStylesheet(); // Include the external CSS
-      addRatingWidget(); // Add the widget
-  };
-  
+    };
     ratingWidgetScript.onerror = () => console.error('Failed to load rating widget script.');
     document.body.appendChild(ratingWidgetScript);
 
-    // Add the rating widget to the page
-    function addRatingWidget() {
-      const widgetContainer = document.createElement('div');
-      widgetContainer.id = 'rating-widget';
-      widgetContainer.className = 'rating-widget position-fixed bottom-0 end-0 m-3 p-3 bg-white shadow rounded';
-      widgetContainer.innerHTML = `
-        <p>Rate this application:</p>
-        <div id="stars">
-          <span data-value="1" class="star">★</span>
-          <span data-value="2" class="star">★</span>
-          <span data-value="3" class="star">★</span>
-          <span data-value="4" class="star">★</span>
-          <span data-value="5" class="star">★</span>
-        </div>
-        <p id="rating-message" class="mt-2"></p>
-        <p id="average-rating" class="mt-2">
-          Average Rating: <span id="average">-</span> (<span id="votes">0</span> votes)
-        </p>
-      `;
-      document.body.appendChild(widgetContainer);
-    }
+    // Dynamically load the rating widget stylesheet
+    addStylesheetIfNotExists('https://farmerbradllc.github.io/application-rating-widget/style.css');
 
     // Fetch projects.json and build footer navigation
     console.log('Fetching projects.json...');
@@ -78,9 +63,10 @@ document.addEventListener('DOMContentLoaded', async function() {
     const projects = await response.json();
     console.log('Projects data:', projects);
 
-    const currentUrl = window.location.href;
-    const normalizeUrl = url => new URL(url).origin + new URL(url).pathname; // Normalize URLs
+    // Normalize URLs for consistent comparison
+    const normalizeUrl = url => new URL(url).origin + new URL(url).pathname;
 
+    const currentUrl = window.location.href;
     const currentIndex = projects.findIndex(project => normalizeUrl(project.url) === normalizeUrl(currentUrl));
 
     if (currentIndex !== -1) {
@@ -90,6 +76,7 @@ document.addEventListener('DOMContentLoaded', async function() {
       const prevProject = projects[prevIndex];
       const nextProject = projects[nextIndex];
 
+      // Build footer navigation
       const footer = document.createElement('footer');
       footer.className = 'mt-5 py-3 border-top';
 
