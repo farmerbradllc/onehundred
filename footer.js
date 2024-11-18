@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', async function () {
   try {
 
 
-ratingWidgetScript.onerror = () => console.error('Failed to load rating widget script.');
+
 document.body.appendChild(ratingWidgetScript);
 
     // Function to check if Bootstrap CSS is included
@@ -57,6 +57,7 @@ document.body.appendChild(ratingWidgetScript);
         console.log('Rating widget script loaded successfully.');
         addRatingWidget(); // Call the function to add the widget
     };
+
     ratingWidgetScript.onerror = () => console.error('Failed to load rating widget script.');
     document.body.appendChild(ratingWidgetScript);
 
