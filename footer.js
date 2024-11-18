@@ -1,20 +1,3 @@
-// Dynamically load the application-rating-widget script
-const ratingWidgetScript = document.createElement('script');
-ratingWidgetScript.src = 'https://farmerbradllc.github.io/application-rating-widget/script.js';
-ratingWidgetScript.async = true;
-ratingWidgetScript.onload = () => {
-  console.log('Rating widget script loaded successfully.');
-  
-  // Ensure the addRatingWidget function is available
-  if (typeof window.addRatingWidget === 'function') {
-    window.addRatingWidget(); // Add the rating widget
-  } else {
-    console.error('addRatingWidget function is not defined.');
-  }
-};
-ratingWidgetScript.onerror = () => console.error('Failed to load rating widget script.');
-document.body.appendChild(ratingWidgetScript);
-
 document.addEventListener('DOMContentLoaded', async function () {
   try {
     // Function to check if Bootstrap CSS is included
@@ -124,6 +107,23 @@ document.addEventListener('DOMContentLoaded', async function () {
       container.appendChild(row);
       footer.appendChild(container);
       document.body.appendChild(footer);
+      // Dynamically load the application-rating-widget script
+const ratingWidgetScript = document.createElement('script');
+ratingWidgetScript.src = 'https://farmerbradllc.github.io/application-rating-widget/script.js';
+ratingWidgetScript.async = true;
+ratingWidgetScript.onload = () => {
+  console.log('Rating widget script loaded successfully.');
+  
+  // Ensure the addRatingWidget function is available
+  if (typeof window.addRatingWidget === 'function') {
+    window.addRatingWidget(); // Add the rating widget
+  } else {
+    console.error('addRatingWidget function is not defined.');
+  }
+};
+ratingWidgetScript.onerror = () => console.error('Failed to load rating widget script.');
+document.body.appendChild(ratingWidgetScript);
+
 
       console.log('Footer successfully appended.');
     } else {
