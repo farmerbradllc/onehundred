@@ -6,6 +6,8 @@ document.addEventListener('DOMContentLoaded', async function() {
       return links.some(link => link.href.includes('bootstrap.min.css'));
     }
 
+    
+
     // Function to check if Bootstrap JS is included
     function isBootstrapJsIncluded() {
       const scripts = Array.from(document.getElementsByTagName('script'));
