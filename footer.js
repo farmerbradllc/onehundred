@@ -1,10 +1,5 @@
 document.addEventListener('DOMContentLoaded', async function () {
   try {
-
-
-
-
-
     // Function to check if Bootstrap CSS is included
     function isBootstrapCssIncluded() {
       const links = Array.from(document.getElementsByTagName('link'));
@@ -54,13 +49,17 @@ document.addEventListener('DOMContentLoaded', async function () {
     ratingWidgetScript.src = 'https://farmerbradllc.github.io/application-rating-widget/script.js';
     ratingWidgetScript.async = true;
     ratingWidgetScript.onload = () => {
-        console.log('Rating widget script loaded successfully.');
-        addRatingWidget(); // Call the function to add the widget
+      console.log('Rating widget script loaded successfully.');
+      
+      // Ensure the addRatingWidget function is available
+      if (typeof window.addRatingWidget === 'function') {
+        window.addRatingWidget(); // Add the rating widget
+      } else {
+        console.error('addRatingWidget function is not defined.');
+      }
     };
-    document.body.appendChild(ratingWidgetScript);
-
     ratingWidgetScript.onerror = () => console.error('Failed to load rating widget script.');
-  
+    document.body.appendChild(ratingWidgetScript);
 
     // Dynamically load the rating widget stylesheet
     addStylesheetIfNotExists('https://farmerbradllc.github.io/application-rating-widget/style.css');
