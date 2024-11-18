@@ -27,9 +27,6 @@ scripts.forEach((src) => {
   script.src = src;
   script.onload = () => {
       loadedScripts++;
-      if (loadedScripts === scripts.length) {
-          callback(); // All scripts loaded, initialize Firebase
-      }
   };
   script.onerror = () => console.error(`Failed to load script: ${src}`);
   document.head.appendChild(script);
