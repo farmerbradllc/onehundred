@@ -12,6 +12,14 @@ document.addEventListener('DOMContentLoaded', async function() {
       return scripts.some(script => script.src.includes('bootstrap.bundle.min.js') || script.src.includes('bootstrap.min.js'));
     }
 
+    function addRatingWidgetStylesheet() {
+      const link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.href = 'https://farmerbradllc.github.io/application-rating-widget/style.css';
+      document.head.appendChild(link);
+    }
+  
+
     // Include Bootstrap CSS if not already included
     if (!isBootstrapCssIncluded()) {
       const bootstrapCss = document.createElement('link');
@@ -36,8 +44,10 @@ document.addEventListener('DOMContentLoaded', async function() {
     ratingWidgetScript.src = 'https://farmerbradllc.github.io/application-rating-widget/script.js';
     ratingWidgetScript.onload = () => {
       console.log('Rating widget script loaded successfully.');
-      addRatingWidget(); // Add the widget once the script is loaded
-    };
+      addRatingWidgetStylesheet(); // Include the external CSS
+      addRatingWidget(); // Add the widget
+  };
+  
     ratingWidgetScript.onerror = () => console.error('Failed to load rating widget script.');
     document.head.appendChild(ratingWidgetScript);
 
