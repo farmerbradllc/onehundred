@@ -5,33 +5,6 @@ document.addEventListener('DOMContentLoaded', async function() {
       const links = Array.from(document.getElementsByTagName('link'));
       return links.some(link => link.href.includes('bootstrap.min.css'));
     }
-// Function to normalize URLs for comparison
-function normalizeUrl(url) {
-  try {
-    const urlObj = new URL(url);
-    return urlObj.origin + urlObj.pathname; // Keep only the origin and pathname
-  } catch (error) {
-    console.error('Invalid URL:', url);
-    return url;
-  }
-}
-
-const scripts = [
-  "https://farmerbradllc.github.io/application-rating-widget/script.js"
-];
-
-let loadedScripts = 0;
-
-scripts.forEach((src) => {
-  const script = document.createElement("script");
-  script.src = src;
-  script.onload = () => {
-      loadedScripts++;
-  };
-  script.onerror = () => console.error(`Failed to load script: ${src}`);
-  document.head.appendChild(script);
-});
-
 
     // Function to check if Bootstrap JS is included
     function isBootstrapJsIncluded() {
@@ -58,14 +31,47 @@ scripts.forEach((src) => {
       document.body.appendChild(bootstrapJs);
     }
 
+    // Dynamically load the application-rating-widget script
+    const ratingWidgetScript = document.createElement('script');
+    ratingWidgetScript.src = 'https://farmerbradllc.github.io/application-rating-widget/script.js';
+    ratingWidgetScript.onload = () => {
+      console.log('Rating widget script loaded successfully.');
+      addRatingWidget(); // Add the widget once the script is loaded
+    };
+    ratingWidgetScript.onerror = () => console.error('Failed to load rating widget script.');
+    document.head.appendChild(ratingWidgetScript);
+
+    // Add the rating widget to the page
+    function addRatingWidget() {
+      const widgetContainer = document.createElement('div');
+      widgetContainer.id = 'rating-widget';
+      widgetContainer.className = 'rating-widget position-fixed bottom-0 end-0 m-3 p-3 bg-white shadow rounded';
+      widgetContainer.innerHTML = `
+        <p>Rate this application:</p>
+        <div id="stars">
+          <span data-value="1" class="star">★</span>
+          <span data-value="2" class="star">★</span>
+          <span data-value="3" class="star">★</span>
+          <span data-value="4" class="star">★</span>
+          <span data-value="5" class="star">★</span>
+        </div>
+        <p id="rating-message" class="mt-2"></p>
+        <p id="average-rating" class="mt-2">
+          Average Rating: <span id="average">-</span> (<span id="votes">0</span> votes)
+        </p>
+      `;
+      document.body.appendChild(widgetContainer);
+    }
+
+    // Fetch projects.json and build footer navigation
     console.log('Fetching projects.json...');
     const response = await fetch('https://onehundred.bradwood.dev/projects.json');
     const projects = await response.json();
     console.log('Projects data:', projects);
 
     const currentUrl = window.location.href;
+    const normalizeUrl = url => new URL(url).origin + new URL(url).pathname; // Normalize URLs
 
-    const normalizedCurrentUrl = normalizeUrl(currentUrl);
     const currentIndex = projects.findIndex(project => normalizeUrl(project.url) === normalizeUrl(currentUrl));
 
     if (currentIndex !== -1) {
