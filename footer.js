@@ -1,5 +1,16 @@
 document.addEventListener('DOMContentLoaded', async function () {
   try {
+
+    const ratingWidgetScript = document.createElement('script');
+ratingWidgetScript.src = 'https://farmerbradllc.github.io/application-rating-widget/script.js';
+ratingWidgetScript.async = true;
+ratingWidgetScript.onload = () => {
+    console.log('Rating widget script loaded successfully.');
+    addRatingWidget(); // Call the function to add the widget
+};
+ratingWidgetScript.onerror = () => console.error('Failed to load rating widget script.');
+document.body.appendChild(ratingWidgetScript);
+
     // Function to check if Bootstrap CSS is included
     function isBootstrapCssIncluded() {
       const links = Array.from(document.getElementsByTagName('link'));
