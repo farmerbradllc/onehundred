@@ -44,11 +44,6 @@ document.addEventListener('DOMContentLoaded', async function () {
       addScriptIfNotExists('https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js');
     }
 
-    
-
-    // Dynamically load the rating widget stylesheet
-    addStylesheetIfNotExists('https://farmerbradllc.github.io/application-rating-widget/style.css');
-
     // Fetch projects.json and build footer navigation
     console.log('Fetching projects.json...');
     const response = await fetch('https://onehundred.bradwood.dev/projects.json');
@@ -107,22 +102,7 @@ document.addEventListener('DOMContentLoaded', async function () {
       container.appendChild(row);
       footer.appendChild(container);
       document.body.appendChild(footer);
-      // Dynamically load the application-rating-widget script
-const ratingWidgetScript = document.createElement('script');
-ratingWidgetScript.src = 'https://farmerbradllc.github.io/application-rating-widget/script.js';
-ratingWidgetScript.async = true;
-ratingWidgetScript.onload = () => {
-  console.log('Rating widget script loaded successfully.');
-  
-  // Ensure the addRatingWidget function is available
-  if (typeof window.addRatingWidget === 'function') {
-    window.addRatingWidget(); // Add the rating widget
-  } else {
-    console.error('addRatingWidget function is not defined.');
-  }
-};
-ratingWidgetScript.onerror = () => console.error('Failed to load rating widget script.');
-document.body.appendChild(ratingWidgetScript);
+     
 
 
       console.log('Footer successfully appended.');
