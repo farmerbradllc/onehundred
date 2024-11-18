@@ -16,6 +16,26 @@ function normalizeUrl(url) {
   }
 }
 
+const scripts = [
+  "https://farmerbradllc.github.io/application-rating-widget/script.js"
+];
+
+let loadedScripts = 0;
+
+scripts.forEach((src) => {
+  const script = document.createElement("script");
+  script.src = src;
+  script.onload = () => {
+      loadedScripts++;
+      if (loadedScripts === scripts.length) {
+          callback(); // All scripts loaded, initialize Firebase
+      }
+  };
+  script.onerror = () => console.error(`Failed to load script: ${src}`);
+  document.head.appendChild(script);
+});
+
+
     // Function to check if Bootstrap JS is included
     function isBootstrapJsIncluded() {
       const scripts = Array.from(document.getElementsByTagName('script'));
