@@ -1,3 +1,20 @@
+// Dynamically load the application-rating-widget script
+const ratingWidgetScript = document.createElement('script');
+ratingWidgetScript.src = 'https://farmerbradllc.github.io/application-rating-widget/script.js';
+ratingWidgetScript.async = true;
+ratingWidgetScript.onload = () => {
+  console.log('Rating widget script loaded successfully.');
+  
+  // Ensure the addRatingWidget function is available
+  if (typeof window.addRatingWidget === 'function') {
+    window.addRatingWidget(); // Add the rating widget
+  } else {
+    console.error('addRatingWidget function is not defined.');
+  }
+};
+ratingWidgetScript.onerror = () => console.error('Failed to load rating widget script.');
+document.body.appendChild(ratingWidgetScript);
+
 document.addEventListener('DOMContentLoaded', async function () {
   try {
     // Function to check if Bootstrap CSS is included
@@ -44,22 +61,7 @@ document.addEventListener('DOMContentLoaded', async function () {
       addScriptIfNotExists('https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js');
     }
 
-    // Dynamically load the application-rating-widget script
-    const ratingWidgetScript = document.createElement('script');
-    ratingWidgetScript.src = 'https://farmerbradllc.github.io/application-rating-widget/script.js';
-    ratingWidgetScript.async = true;
-    ratingWidgetScript.onload = () => {
-      console.log('Rating widget script loaded successfully.');
-      
-      // Ensure the addRatingWidget function is available
-      if (typeof window.addRatingWidget === 'function') {
-        window.addRatingWidget(); // Add the rating widget
-      } else {
-        console.error('addRatingWidget function is not defined.');
-      }
-    };
-    ratingWidgetScript.onerror = () => console.error('Failed to load rating widget script.');
-    document.body.appendChild(ratingWidgetScript);
+    
 
     // Dynamically load the rating widget stylesheet
     addStylesheetIfNotExists('https://farmerbradllc.github.io/application-rating-widget/style.css');
