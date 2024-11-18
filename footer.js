@@ -14,6 +14,20 @@ document.addEventListener('DOMContentLoaded', async function() {
       return scripts.some(script => script.src.includes('bootstrap.bundle.min.js') || script.src.includes('bootstrap.min.js'));
     }
 
+    document.addEventListener("DOMContentLoaded", () => {
+      const reviewScript = document.createElement("script");
+      reviewScript.src = "https://farmerbradllc.github.io/application-rating-widget/script.js";
+      reviewScript.async = true; // Load asynchronously
+      reviewScript.onload = () => {
+          console.log("Application review script loaded successfully.");
+      };
+      reviewScript.onerror = () => {
+          console.error("Failed to load the application review script.");
+      };
+      document.head.appendChild(reviewScript);
+  });
+  
+
     function addRatingWidgetStylesheet() {
       const link = document.createElement('link');
       link.rel = 'stylesheet';
@@ -41,15 +55,20 @@ document.addEventListener('DOMContentLoaded', async function() {
       document.body.appendChild(bootstrapJs);
     }
 
-    // Dynamically load the application-rating-widget script
-    const ratingWidgetScript = document.createElement('script');
-    ratingWidgetScript.src = 'https://farmerbradllc.github.io/application-rating-widget/script.js';
-    ratingWidgetScript.onload = () => {
-      console.log('Rating widget script loaded successfully.');
-      addRatingWidgetStylesheet(); // Include the external CSS
-      addRatingWidget(); // Add the widget
-  };
-  
+
+    const reviewScript = document.createElement("script");
+    reviewScript.src = "https://farmerbradllc.github.io/application-rating-widget/script.js";
+    reviewScript.async = true; // Load asynchronously
+    reviewScript.onload = () => {
+      addRatingWidgetStylesheet();
+      addRatingWidget(); 
+        console.log("Application review script loaded successfully.");
+    };
+    reviewScript.onerror = () => {
+        console.error("Failed to load the application review script.");
+    };
+    document.head.appendChild(reviewScript);
+
     ratingWidgetScript.onerror = () => console.error('Failed to load rating widget script.');
     document.head.appendChild(ratingWidgetScript);
 
