@@ -39,7 +39,7 @@ A curated list of 100 highly searched web tools to build, categorized for practi
 
 ## Math and Science Tools
 26. Scientific Calculator
-27. [Free Finance Calculator](https://farmerbradllc.github.io/finance-calc)
+27. [Free Finance Calculator](https://finance-calculator.bradwood.dev)
 28. BMI Calculator
 29. Loan EMI Calculator
 30. Unit Converter
