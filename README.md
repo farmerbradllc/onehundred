@@ -27,7 +27,7 @@ A curated list of 100 highly searched web tools to build, categorized for practi
 16. [SEO Meta Tag Analyzer](https://seo.bradwood.dev)
 17. [Favicon Generator](https://favicon.bradwood.dev)
 18. Website Speed Test
-19. DNS Lookup Tool
+19. [DNS Lookup Tool](https://dns-lookup.bradwood.dev)
 20. Broken Link Checker
 
 ## Password and Security Tools
