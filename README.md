@@ -87,8 +87,8 @@ A curated list of 100 highly searched web tools to build, categorized for practi
 59. Step Counter
 60. Heart Rate Monitor
 
-## Fun and Random Tools
-61. Random Name Picker
+## Games
+61. [Turkey Trot](https://turkey-trot.bradwood.dev)
 62. Spin the Wheel
 63. Dice Roller
 64. Horoscope Generator
