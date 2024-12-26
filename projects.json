@@ -40,6 +40,11 @@
     "url": "https://json-format.bradwood.dev"
   },
   {
+    "id":39,
+    "title":"User Agent Detector",
+    "url":"https://ua.bradwood.dev"
+  },
+  {
     "id": 61,
     "title": "Turkey Trot",
     "url": "https://turkey-trot.bradwood.dev"
