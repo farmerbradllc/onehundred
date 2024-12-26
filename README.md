@@ -56,7 +56,7 @@ A curated list of 100 highly searched web tools to build, categorized for practi
 36. [JSON Formatter](https://json-format.bradwood.dev)
 37. HTML Minifier
 38. CSS Generator
-39. JavaScript Tester
+39. [User Agent Detector](https://ua.bradwood.dev)
 40. Regex Tester
 
 ## Finance Tools
